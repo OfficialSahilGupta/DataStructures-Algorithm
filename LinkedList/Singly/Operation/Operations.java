@@ -1,5 +1,5 @@
-package Insert;
-public class Insertion{
+package Operation;
+public class Operations{
     private int size;
     private Node head;
     private Node tail;
@@ -18,7 +18,7 @@ public class Insertion{
         }
     }
 
-    public Insertion(){
+    public Operations(){
         this.size = 0;
     }
 
@@ -65,6 +65,52 @@ public class Insertion{
         Node node = new Node(value, temp.next);
         temp.next = node;
         size++;
+    }
+
+    public int deleteFirst(){
+        int val = head.value;
+        head = head.next;
+        size--;
+
+        return val;
+    }
+
+    public int deleteEnd(){
+        if(size <= 1){
+            return deleteFirst();
+        }
+        Node temp = get(size - 2);
+        int val = tail.value;
+        tail = temp;
+        tail.next = null;
+        size--;
+
+        return val;
+    }
+
+    public Node get(int index){
+        Node temp = head;
+        for(int i = 0; i < index ; i++){
+            temp = temp.next;
+        }
+        return temp;
+    }
+
+    public int deleteIndex(int index){
+        if(index == 0){
+            return deleteFirst();
+        }
+
+        if(index == size){
+            return deleteEnd();
+        }
+
+        Node temp = get(index - 1);
+        int val = temp.value;
+        temp.next = temp.next.next;
+        size--;
+
+        return val;
     }
 
     public void display(){
