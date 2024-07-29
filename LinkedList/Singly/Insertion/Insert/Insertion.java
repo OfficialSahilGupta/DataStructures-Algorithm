@@ -1,5 +1,5 @@
-package InsertionStart;
-public class InsertionStart{
+package Insert;
+public class Insertion{
     private int size;
     private Node head;
     private Node tail;
@@ -18,7 +18,7 @@ public class InsertionStart{
         }
     }
 
-    public InsertionStart(){
+    public Insertion(){
         this.size = 0;
     }
 
@@ -32,6 +32,39 @@ public class InsertionStart{
         head = node;
         size++;
 
+    }
+
+    public void insertEnd(int value){
+        if(tail == null){
+            insertBegin(value);
+            return;
+        }
+
+        Node node = new Node(value);
+        tail.next = node;
+        tail = node;
+        size++;
+    }
+
+    public void insertIndex(int value, int index){
+        if(index == 0){
+            insertBegin(value);
+            return;
+        }
+
+        if(index == size){
+            insertEnd(value);
+            return;
+        }
+
+        Node temp = head;
+        for(int i = 1; i<index; i++){
+            temp = temp.next;
+        }
+
+        Node node = new Node(value, temp.next);
+        temp.next = node;
+        size++;
     }
 
     public void display(){
