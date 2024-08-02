@@ -45,7 +45,7 @@ public class Operations{
 
     // this method will calls when required for the insertion at the end.
     public void insertEnd(int value){
-        if(tail == null){
+        if(tail = null){
             insertBegin(value);
             return;
         }
@@ -65,13 +65,13 @@ public class Operations{
         }
 
         // thie edge case says when the index is at the last position calls insertEnd(value) method.
-        if(index == size){
+        if(index == size - 1){
             insertEnd(value);
             return;
         }
 
         Node temp = head;
-        for(int i = 1; i<index; i++){
+        for(int i = 1; i < index; i++){
             temp = temp.next;
         }
 
@@ -118,7 +118,7 @@ public class Operations{
             return deleteFirst();
         }
 
-        if(index == size){
+        if(index == size - 1){
             // thie edge case says when the index is at the last position calls insertEnd(value) method
             return deleteEnd();
         }
